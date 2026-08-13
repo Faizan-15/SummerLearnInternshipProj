@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Foodpanda POS Portal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="unsafe-url">
+        <script src="globallogin.js"></script>
+        <script>
+            function myfunction(){
+                alert("New Employee Added Successfully!");
+            }
+
+            function employeeinsert() {
+                const xhttp = new XMLHttpRequest();
+                linkempinsert=`https://oracleapex.com/ords/faizan05/hr/faizanemp/`;
+                xhttp.onload = function() {
+                    document.getElementsByClassName("empinsertsuccesscheck").innerHTML = this.responseText;
+                }
+                xhttp.open("POST", linkempinsert, true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                let stringsempindata = "employeeid=" + document.getElementById("i1").value + "&firstname=" + document.getElementById("i2").value + "&lastname=" + document.getElementById("i3").value + "&birthdate=" + document.getElementById("i4").value + "&photo=" + document.getElementById("i5").value + "&notes=" + document.getElementById("i6").value +"&username=" + global_username;
+                console.log(stringsempindata);
+                console.log(document.getElementById("i1").value);
+                console.log(document.getElementById("i2").value);
+                console.log(document.getElementById("i3").value);
+                console.log(document.getElementById("i4").value);
+                console.log(document.getElementById("i5").value);
+                console.log(document.getElementById("i6").value);
+                xhttp.send(stringsempindata);
+            }
+
+            function employeecheck(){
+                const xhttp = new XMLHttpRequest();
+                linkempcheckview = `https://oracleapex.com/ords/faizan05/hr/faizanemployee/${document.getElementById("i7").value}`;
+                console.log(linkempcheckview);
+                xhttp.open("GET", linkempcheckview, true);
+                xhttp.send();
+                xhttp.onload = ()=> {
+                    if (xhttp.status === 200) {
+                        const response = JSON.parse(xhttp.response).items[0];
+                        console.log(response);
+                        document.getElementById("employeesdetails").innerHTML = `
+                            <h3>Employee Details</h3>
+                            <p><b>Employee ID:</b> ${response.employeeid}</p>
+                            <p><b>Name:</b> ${response.firstname} ${response.lastname}</p>
+                            <p><b>Birthdate:</b> ${response.birthdate}</p>
+                            <p><b>Photo:</b> ${response.photo}</p>
+                            <p><b>Notes:</b> ${response.notes}</p>
+                        `;
+                        // Process the response data here
+                    } else {
+                        // Handle error
+                    }
+                };
+                
+            }
+
+            function deleteemployee(){
+                const xhttp = new XMLHttpRequest();
+                linkdelete = `https://oracleapex.com/ords/faizan05/hr/faizanemployee/${document.getElementById("i9").value}`;
+                console.log(linkdelete);
+                xhttp.onload = function() {
+                    if (this.status ===200){
+                        console.log(this.responseText);
+                        document.getElementById("empdeletesuccesscheck").innerHTML = this.responseText;
+                    } else {
+                        document.getElementById("empdeletesuccesscheck").innerHTML = this.responseText;
+                        // Handle error
+                    }
+
+                }
+                xhttp.open("POST", linkdelete, true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send();
+            }
+
+            function employeedeleteconfirmation(){
+                if (confirm("Are you sure you want to delete this employee?")) {
+                    deleteemployee();
+                } else {
+                    // User clicked "Cancel", do nothing
+                }
+            }
+        </script>
+        <link href="styling.css" rel="stylesheet">
+    </head>
+
+    <body style="background-color: #f4f6f9;" onload="fetchglobalusername()">
+        <div style="display: flex; flex-direction: row; text-align:center; background-color: darkblue; border-radius: 10px; height: 140px; margin: 10px">
+            <div style="display: flex; width:100%; justify-content: space-between; align-items: center; text-align:center; background-color: darkblue; border-radius: 10px;">
+                <div class="welcome-message"></div>
+                <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
+                <div style="height: auto; width: 20%;"><a href="login.html" style="color: white;">Logout</a></div>
+            </div>
+        </div>
+
+        <div style="background-color: rgba(0, 0, 139); padding: 10px; margin:10px; border-radius: 10px; height:auto; text-align: center;">
+            <div class="menu">
+                <a style="color: white;" href="page1.html">Main</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page2.html">Orders</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page3.html">Customers</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page4.html">Shippers</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page5.html">Suppliers</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page6.html">Employees</a>
+            </div>
+        </div>
+        
+        <!-- <div style="background-color: cornflowerblue; border-color: black; border-style:solid; padding: 5px; margin:10px; border-radius: 10px; height:auto;"> -->
+            
+            <div class="divcol">
+    <!-- New Employee Addition -->
+            <h4>Add Employee</h4>
+            <p>Enter Employee Details to add to the database.</p>
+            <input class="searchboxes" id="i1" type="number" placeholder="EmployeeID">
+            <input class="searchboxes" id="i2" type="text" placeholder="Employee First Name">
+            <input class="searchboxes" id="i3" type="text" placeholder="Employee Last Name">
+            <input class="searchboxes" id="i4" type="text" placeholder="Birthdate">
+            <input class="searchboxes" id="i5" type="text" placeholder="Photo">
+            <input class="searchboxes" id="i6" type="text" placeholder="Notes">
+            <button onclick="employeeinsert()" style="color: black; margin: 10px;">Add New Employee</button>
+            <div class="empinsertsuccesscheck"></div>
+            
+            </div>
+            
+    <!-- View Employee -->
+            <div class="divcol">
+            
+            <h4>View Employee</h4>
+            <p>Enter Employee Details to view from the database.</p>
+            <input id="i7" class="searchboxes" type="text" placeholder="Enter Employee ID, Employee Name or Phone Number. ">
+            <button style="color: black; margin: 10px;" onclick="employeecheck()">Find Employee</button>
+            <div id="employeesdetails"></div>
+            
+            </div>
+            
+    <!-- Employee Modification -->
+            <div class="divcol">
+            
+            <h4>Modify Employee</h4>
+            <p>Enter Employee Details to Modify from the database.</p>
+            <input id="i8" class="searchboxes" type="text" placeholder="Enter Employee ID, Employee Name or Phone Number. ">
+            <button style="color: black; margin: 10px;">Find Employee</button>
+            
+            </div>
+            
+    <!-- Deleting Employee -->
+            <div class="divcol">
+            
+            <h4>Delete Employee</h4>
+            <p>Enter Employee Details to delete from the database.</p>
+            <input id="i9" class="searchboxes" type="text" placeholder="Enter Employee ID, Employee Name or Phone Number. ">
+            <button style="color: black; margin: 10px;" onclick="employeedeleteconfirmation()">Delete Employee Data</button>
+            <div id="empdeletesuccesscheck"></div>
+            </div>
+            
+        <!-- </div> -->
+    </body>
+</html>

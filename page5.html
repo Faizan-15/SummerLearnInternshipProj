@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Foodpanda POS Portal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="globallogin.js"></script>
+    <script>
+        function supplierinsert() {
+            const xhttp = new XMLHttpRequest();
+            linksupinsert=`https://oracleapex.com/ords/faizan05/hr/faizansup/`;
+            xhttp.onload = function() {
+                document.getElementsByClassName("supinsertsuccesscheck").innerHTML = this.responseText;
+            }
+            xhttp.open("POST", linksupinsert, true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            let stringssupindata = "supplierid=" + document.getElementById("i1").value + "&suppliername=" + document.getElementById("i2").value + "&contactname=" + document.getElementById("i3").value + "&address=" + document.getElementById("i4").value + "&city=" + document.getElementById("i5").value + "&postalcode=" + document.getElementById("i6").value + "&country=" + document.getElementById("i7").value + "&phone=" + document.getElementById("i8").value;
+            console.log(stringssupindata);
+            console.log(document.getElementById("i1").value);
+            console.log(document.getElementById("i2").value);
+            console.log(document.getElementById("i3").value);
+            console.log(document.getElementById("i4").value);
+            console.log(document.getElementById("i5").value);
+            console.log(document.getElementById("i6").value);
+            console.log(document.getElementById("i7").value);
+            console.log(document.getElementById("i8").value);
+            xhttp.send(stringssupindata);
+        }
+        
+        function suppliercheck(){
+            const xhttp = new XMLHttpRequest();
+            linksupcheckview = `https://oracleapex.com/ords/faizan05/hr/faizansuppliers/${document.getElementById("i9").value}`;
+            console.log(linksupcheckview);
+            xhttp.open("GET", linksupcheckview, true);
+            xhttp.send();
+            xhttp.onload = ()=> {
+                if (xhttp.status === 200) {
+                    const response = JSON.parse(xhttp.response);
+                    console.log(response);
+                    document.getElementById("suppliersdetails").innerHTML = `
+                            <h3>Supplier Details</h3>
+                            <p><b>Supplier ID:</b> ${response.supplierid}</p>
+                            <p><b>Name:</b> ${response.suppliername}</p>
+                            <p><b>Contact Name:</b> ${response.contactname}</p>
+                            <p><b>Phone:</b> ${response.phone}</p>
+                            <p><b>Postalcode:</b> ${response.postalcode}</p>
+                            <p><b>Address:</b> ${response.address}</p>
+                            <p><b>City:</b> ${response.city}</p>
+                            <p><b>Country:</b> ${response.country}</p>
+                        `;
+                }
+                else {
+                    // Handle error
+                }
+            };
+        }
+    </script>
+    <link href="styling.css" rel="stylesheet">
+</head>
+<body style="background-color: #f4f6f9;" onload="fetchglobalusername()">
+    <div style="display: flex; flex-direction: row; text-align:center; background-color: darkblue; border-radius: 10px; height: 140px; margin: 10px">
+        <div style="display: flex; width:100%; justify-content: space-between; align-items: center; text-align:center; background-color: darkblue; border-radius: 10px;">
+            <div class="welcome-message"></div>
+            <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
+            <div style="height: auto; width: 20%;"><a href="login.html" style="color: white;">Logout</a></div>
+        </div>
+    </div>
+
+    <div style="background-color: rgba(0, 0, 139); padding: 10px; margin:10px; border-radius: 10px; height:auto; text-align: center;">
+            <div class="menu">
+                <a style="color: white;" href="page1.html">Main</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page2.html">Orders</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page3.html">Customers</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page4.html">Shippers</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page5.html">Suppliers</a>
+            </div>
+            <div class="menu">
+                <a style="color: white;" href="page6.html">Employees</a>
+            </div>
+    </div>
+    
+    <!-- <div style="background-color: cornflowerblue; border-color: black; border-style:solid; padding: 5px; margin:10px; border-radius: 10px; height:auto;"> -->
+        
+        <div class="divcol">
+<!-- New Supplier Addition -->
+        <h4>Add Supplier</h4>
+        <p>Enter Supplier Details to add to the database.</p>
+        <input id="i1" class="searchboxes" type="text" placeholder="Supplier ID" style="width: 320px; margin: 5px;">
+        <input id="i2" class="searchboxes" type="text" placeholder="Supplier Name" style="width: 320px; margin: 5px;">
+        <input id="i3" class="searchboxes" type="text" placeholder="Contact Name" style="width: 320px; margin: 5px;">
+        <input id="i4" class="searchboxes" type="text" placeholder="Address" style="width: 320px; margin: 5px;">
+        <input id="i5" class="searchboxes" type="text" placeholder="City" style="width: 320px; margin: 5px;">
+        <input id="i6" class="searchboxes" type="text" placeholder="Postal Code" style="width: 320px; margin: 5px;">
+        <input id="i7" class="searchboxes" type="text" placeholder="Country" style="width: 320px; margin: 5px;">
+        <input id="i8" class="searchboxes" type="text" placeholder="Phone Number" style="width: 320px; margin: 5px;">
+        <button onclick="supplierinsert()" style="color: black; margin: 10px;">Add New Supplier</button>
+        <div class="supinsertsuccesscheck"></div>
+        
+        </div>
+        
+<!-- View Supplier -->
+        <div class="divcol">
+        
+        <h4>View Supplier</h4>
+        <p>Enter Supplier Details to view from the database.</p>
+        <input id="i9" class="searchboxes" type="text" placeholder="Enter Supplier ID, Supplier Name or Phone Number. " style="width: 350px; margin: 5px;">
+        <button style="color: black; margin: 10px;" onclick="suppliercheck()">Find Supplier</button>
+        <div id="suppliersdetails"></div>
+        
+        </div>
+        
+<!-- Supplier Modification -->
+        <div class="divcol">
+        
+        <h4>Modify Supplier</h4>
+        <p>Enter Supplier Details to Modify from the database.</p>
+        <input class="searchboxes" type="text" placeholder="Enter Supplier ID, Supplier Name or Phone Number. " style="width: 350px; margin: 5px;">
+        <button style="color: black; margin: 10px;">Find Supplier</button>
+        
+        </div>
+        
+<!-- Deleting Supplier -->
+        <div class="divcol">
+        
+        <h4>Delete Supplier</h4>
+        <p>Enter Supplier Details to delete from the database.</p>
+        <input class="searchboxes" type="text" placeholder="Enter Supplier ID, Supplier Name or Phone Number. " style="width: 350px; margin: 5px;">
+        <button style="color: black; margin: 10px;">Find Supplier</button>
+        
+        </div>
+        
+    <!-- </div> -->
+</body>
+</html>

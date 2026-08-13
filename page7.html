@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Products</title>
+        <script>
+            function fetchproducts() {
+                const xhttp = new XMLHttpRequest();
+                linkproducts = `https://oracleapex.com/ords/faizan05/hr/faizanpro/`;
+                xhttp.open("GET", linkproducts, true);
+                xhttp.send();
+                xhttp.onload = () => {
+                    if(xhttp.status === 200) {
+                        const jmlp = JSON.parse(xhttp.response);
+                        console.log(jmlp.count);
+                        console.log(jmlp);
+
+                        for(let i=0; i < jmlp.count; i++) {
+                            response = jmlp.items[i];
+                            console.log(response);
+                            document.getElementsByClassName("productsunitary")[i].innerHTML = `
+                            <td><p>${response.productid}</p></td>
+                            <td><p>${response.productname}</p></td>
+                            <td><p>${response.suppliername}</p></td>
+                            <td><p>${response.categoryname}</p></td>
+                            <td><p>${response.unit}</p></td>
+                            <td><p>${response.price}</p></td>
+                            <td><button class="buttonclass" id="${response.productid}" onclick="show()">Show Details</button></td>
+                            `;
+                        }
+                    }
+                }
+            }
+            function show() {
+                const productId = event.target.id;
+                const xhttp = new XMLHttpRequest();
+                linkproductdetails = `https://oracleapex.com/ords/faizan05/hr/faizanpro/${productId}`;
+                console.log(linkproductdetails);
+                xhttp.open("GET", linkproductdetails, true);
+                xhttp.send();
+                xhttp.onload = () => {
+                    if(xhttp.status === 200) {
+                        const jmlp = JSON.parse(xhttp.response);
+                        response = jmlp.items[0];
+                        console.log(response);
+                        document.getElementsByClassName("displaycard")[0].innerHTML = `
+                            <div style="width: 100%; background-color: white; border: 3px solid black; border-radius: 10px; padding: 10px; margin: 10px;">
+                                <h3>Product Details</h3>
+                                <div style="background-color: white; border-radius: 10px; padding: 5px;">
+                                    <img src="OIP.webp" alt="Product Image" style="max-height: 130px; border-radius: 10px;">
+                                </div>
+                                <p><b>Product ID:</b> ${response.productid}</p>
+                                <p><b>Product Name:</b> ${response.productname}</p>
+                                <p><b>Supplier:</b> ${response.suppliername}</p>
+                                <p><b>Category:</b> ${response.categoryname}</p>
+                                <p><b>Unit:</b> ${response.unit}</p>
+                                <p><b>Price:</b> ${response.price}</p>
+                            </div>
+                        `;
+                    }
+                }
+            }
+        </script>
+        <link href="styling.css" rel="stylesheet">
+        <style>
+            div.displaycard {
+                right: 100px;
+                position: fixed;
+            }
+            .buttonclass {
+                color: red;
+                background-color: white;
+                border: 1px solid blue;
+                padding: 5px;
+                height: auto;
+                width: auto;
+            }
+            thead, thead th {
+                border: 3px solid black;
+                border-collapse: separate;
+            }
+            table {
+                outline: 3px solid black;
+                border: 3px solid black;
+                border-radius: 10px;
+                overflow: hidden;
+                width: 75%;
+            }
+            tr, td {
+                width: auto;
+                border: 1px solid black;
+                border-collapse: separate;
+            }
+
+        </style>
+    </head>
+
+    <body style="background-color: #f4f6f9; width:90%;">
+        <div style="display: flex; flex-direction: row;">
+            <table margin="10px" style="width: 70%; border-collapse: separate; text-align: center; background-color: white; border-radius: 10px;">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Supplier</th>
+                        <th>Category</th>
+                        <th>Unit</th>
+                        <th>Price</th>
+                        <th>Card Display</th>
+                    </tr>
+                </thead>
+                <tbody class="displaydata">
+                    <!-- 1 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 2 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 3 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 4 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 5 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 6 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 7 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 8 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 9 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 10 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 11 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 12 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 13 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 14 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 15 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 16 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 17 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 18 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 19 -->
+                    <tr class="productsunitary">
+                    </tr>
+                    <!-- 20 -->
+                    <tr class="productsunitary">
+                    </tr>
+                </tbody>
+            </table>
+            <div class="displaycard" style="height: auto;">
+            </div>
+        </div>
+        <button style="margin: 10px;" onclick="fetchproducts()">Refresh Products</button>
+    </body>
+</html>
