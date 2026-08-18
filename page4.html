@@ -5,50 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="globallogin.js"></script>
-    <script>
-        function shipperinsert(){
-            const xhttp = new XMLHttpRequest();
-            linkshipinsert=`https://oracleapex.com/ords/faizan05/hr/faizanship/`;
-            xhttp.onload = function() {
-                document.getElementsByClassName("shipinsertsuccesscheck").innerHTML = this.responseText;
-            }
-            xhttp.open("POST", linkshipinsert, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            let stringsshipindata = "shipperid=" + document.getElementById("i1").value + "&shippername=" + document.getElementById("i2").value + "&phone=" + document.getElementById("i3").value + "&username=" + global_username;
-            console.log(stringsshipindata);
-            console.log(document.getElementById("i1").value);
-            console.log(document.getElementById("i2").value);
-            console.log(document.getElementById("i3").value);
-            xhttp.send(stringsshipindata);
-
-        }
-        function shippercheck(){
-            const xhttp = new XMLHttpRequest();
-            linkshipcheckview = `https://oracleapex.com/ords/faizan05/hr/faizanshippers/${document.getElementById("i4").value}`;
-            console.log(linkshipcheckview);
-            xhttp.open("GET", linkshipcheckview, true);
-            xhttp.send();
-            xhttp.onload = ()=> {
-                if (xhttp.status === 200) {
-                    const response = JSON.parse(xhttp.response);
-                    console.log(response);
-                    document.getElementById("shippersdetails").innerHTML = `
-                            <h3>Shipper Details</h3>
-                            <p><b>Shipper ID:</b> ${response.shipperid}</p>
-                            <p><b>Name:</b> ${response.shippername}</p>
-                            <p><b>Phone:</b> ${response.phone}</p>
-                        `;
-                }
-                else {
-                    // Handle error
-                }
-            }
-
-        }
-    </script>
     <link href="styling.css" rel="stylesheet">
 </head>
-<body style="background-color: #f4f6f9;" onload="fetchglobalusername()">
+<body onload="fetchglobalusername()">
     <div class="header">
         <div class="welcome-message"></div>
         <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>

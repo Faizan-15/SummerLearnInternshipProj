@@ -1,3 +1,5 @@
+var fullproductarray = sessionStorage.getItem("fullproductarray") || "";
+
 function fetchproducts() {
     // Loop through the products array and create HTML elements for each product
     const xhttp = new XMLHttpRequest();
@@ -22,7 +24,7 @@ function fetchproducts() {
                 productElement.innerHTML = `
                     <h3>${product.productname}</h3>
                     <p>Price: ${product.price}</p>
-                    <button>Add to Cart</button>
+                    <button onclick="addtocart(${JSON.stringify(product)})">Add to Cart</button>
                 `;
                 productsContainer.appendChild(productElement);
             }
@@ -30,8 +32,8 @@ function fetchproducts() {
     }
 }
 
-function addtocart(productname, price) {
-    sessionStorage.setItem("productname", productname);
-    sessionStorage.setItem("price", price);
-    
+function addtocart(fullproductarray) {
+    if (fullproductarray === null || fullproductarray === "") {
+        sessionStorage.setItem("fullproductarray", fullproductarray);
+    }
 }

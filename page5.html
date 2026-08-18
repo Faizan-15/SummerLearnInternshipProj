@@ -6,58 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="globallogin.js"></script>
     <script>
-        function supplierinsert() {
-            const xhttp = new XMLHttpRequest();
-            linksupinsert=`https://oracleapex.com/ords/faizan05/hr/faizansup/`;
-            xhttp.onload = function() {
-                document.getElementsByClassName("supinsertsuccesscheck").innerHTML = this.responseText;
-            }
-            xhttp.open("POST", linksupinsert, true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            let stringssupindata = "supplierid=" + document.getElementById("i1").value + "&suppliername=" + document.getElementById("i2").value + "&contactname=" + document.getElementById("i3").value + "&address=" + document.getElementById("i4").value + "&city=" + document.getElementById("i5").value + "&postalcode=" + document.getElementById("i6").value + "&country=" + document.getElementById("i7").value + "&phone=" + document.getElementById("i8").value;
-            console.log(stringssupindata);
-            console.log(document.getElementById("i1").value);
-            console.log(document.getElementById("i2").value);
-            console.log(document.getElementById("i3").value);
-            console.log(document.getElementById("i4").value);
-            console.log(document.getElementById("i5").value);
-            console.log(document.getElementById("i6").value);
-            console.log(document.getElementById("i7").value);
-            console.log(document.getElementById("i8").value);
-            xhttp.send(stringssupindata);
-        }
         
-        function suppliercheck(){
-            const xhttp = new XMLHttpRequest();
-            linksupcheckview = `https://oracleapex.com/ords/faizan05/hr/faizansuppliers/${document.getElementById("i9").value}`;
-            console.log(linksupcheckview);
-            xhttp.open("GET", linksupcheckview, true);
-            xhttp.send();
-            xhttp.onload = ()=> {
-                if (xhttp.status === 200) {
-                    const response = JSON.parse(xhttp.response);
-                    console.log(response);
-                    document.getElementById("suppliersdetails").innerHTML = `
-                            <h3>Supplier Details</h3>
-                            <p><b>Supplier ID:</b> ${response.supplierid}</p>
-                            <p><b>Name:</b> ${response.suppliername}</p>
-                            <p><b>Contact Name:</b> ${response.contactname}</p>
-                            <p><b>Phone:</b> ${response.phone}</p>
-                            <p><b>Postalcode:</b> ${response.postalcode}</p>
-                            <p><b>Address:</b> ${response.address}</p>
-                            <p><b>City:</b> ${response.city}</p>
-                            <p><b>Country:</b> ${response.country}</p>
-                        `;
-                }
-                else {
-                    // Handle error
-                }
-            };
-        }
     </script>
     <link href="styling.css" rel="stylesheet">
 </head>
-<body style="background-color: #f4f6f9;" onload="fetchglobalusername()">
+<body onload="fetchglobalusername()">
     <div class="header">
         <div class="welcome-message"></div>
         <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
