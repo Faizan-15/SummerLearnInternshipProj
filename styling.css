@@ -1,12 +1,20 @@
 body {
     background-color: #f4f6f9;
 }
+.totalbodybox {
+    display: flex;
+    flex-direction: row;
+}
+.cart-box {
+    border: 1px solid black;
+    border-radius: 5px;
+}
 input.searchboxes {
-        height: 20px;
-        width: 320px;
-        margin: 5px;
-        border-radius: 5px;
-        border: 1px solid gray;
+    height: 20px;
+    width: 320px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }
 button {
     height: 20px;
@@ -21,6 +29,8 @@ button:hover {
     background-color:burlywood;
 }
 div.header {
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: row;
     text-align: center;

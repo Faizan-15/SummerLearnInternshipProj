@@ -32,8 +32,15 @@ function fetchproducts() {
     }
 }
 
-function addtocart(fullproductarray) {
-    if (fullproductarray === null || fullproductarray === "") {
-        sessionStorage.setItem("fullproductarray", fullproductarray);
+function addtocart(fullproductarraypass) {
+    while(fullproductarray !== null) {
+        if (fullproductarray === null || fullproductarray === "") {
+            sessionStorage.setItem("fullproductarray", fullproductarraypass);
+        }
+        else {
+            document.getElementById('cart-container').innerHTML=`
+                <p>${fullproductarray}</p>
+            `
+        }
     }
 }
