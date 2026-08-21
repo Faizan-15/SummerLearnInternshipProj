@@ -11,11 +11,9 @@ function fetchproducts() {
             const response = JSON.parse(xhttp.responseText);
             const products = response.items;
             console.log(products);
-            const productsContainer = document.getElementById('products-container');
+            const productsContainer = document.getElementById('products-menu');
             console.log(productsContainer);
-            productsContainer.innerHTML = `
-                <h1 style="color: white; text-align: center;">Products...</h1>
-            `; // Clear previous content
+            productsContainer.innerHTML = `<h1 style="color: white; text-align: center;">Products...</h1>`; // Clear previous content
 
             for (let i = 0; i < products.length; i++) {
                 const product = products[i];
@@ -27,7 +25,7 @@ function fetchproducts() {
                 productElement.innerHTML = `
                     <h3>${product.productname}</h3>
                     <p>Price: ${product.price}</p>
-                    <button onclick="addtocart(productstring)">Add to Cart</button>
+                    <button id="pro${product.productid}" onclick="addtocart(${product.productid})">Add to Cart</button>
                 `;
                 productsContainer.appendChild(productElement);
             }
@@ -36,18 +34,26 @@ function fetchproducts() {
 }
 
 function addtocart(fullproductarraypass) {
-    while(fullproductarray !== null) {
-        if (fullproductarray === null || fullproductarray === "") {
-            sessionStorage.setItem("fullproductarray", fullproductarraypass);
-        }
-        else {
-            cartitembox=document.createElement('div');
-            cartitembox.className='cartitembox';
-            cartitembox.innerHTML=`
-                <img class="smallpic" src="OIPPP.jpg">
-                <p>${fullproductarray}</p>
-            `
-        }
+    console.log("val="+fullproductarraypass);
+    if (fullproductarraypass) {
+        console.log('True');
+    }
+    else {
+        console.log('False');
+    }
+
+    if (fullproductarray === null || fullproductarray === "") {
+        sessionStorage.setItem("fullproductarray", fullproductarraypass);
+        console.log("123");
+    }
+    else {
+        cartitembox=document.createElement('div');
+        cartitembox.className='cartitembox';
+        cartitembox.innerHTML=`
+            <img class="smallpic" src="OIPPP.jpg">
+            <p>${fullproductarray}</p>
+        `
+        console.log("456");
     }
 }
 
