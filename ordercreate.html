@@ -7,23 +7,22 @@
         <meta name="referrer" content="unsafe-url">
         <script type="text/javascript" src="globallogin.js"></script>
         <script type="text/javascript" src="ordercreate.js"></script>
-        </script>
         <link href="styling.css" rel="stylesheet">
     </head>
-    <body onload="fetchglobalusername(); fetchproducts();">
+    <body onload="callheader(); fetchglobalusername(); fetchproducts();">
         <div class="header">
-            <div class="welcome-message"></div>
-            <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
-            <div style="height: auto; width: 20%;"><a href="login.html" style="color: white;">Logout</a></div>
         </div>
         <div class="totalbodybox">
-            <div id="products-container">
-                <h1 style="color: white; text-align: center;">Products...</h1>
+            <div id="products-menu">
             </div>
-            <div class="cart-box">
+            <div class="cart-main-box">
                 <h1 style="color: white; text-align: center;">Cart</h1>
                 <div id="cart-container">
                 </div>
+                <div>
+                    <h4>Total Price:</h4>
+                </div>
+                <button>Order Submit</button>
             </div>
         </div>
     </body>

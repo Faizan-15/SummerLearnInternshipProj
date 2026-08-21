@@ -13,7 +13,9 @@ function fetchproducts() {
             console.log(products);
             const productsContainer = document.getElementById('products-container');
             console.log(productsContainer);
-            productsContainer.innerHTML = ''; // Clear previous content
+            productsContainer.innerHTML = `
+                <h1 style="color: white; text-align: center;">Products...</h1>
+            `; // Clear previous content
 
             for (let i = 0; i < products.length; i++) {
                 const product = products[i];
@@ -21,10 +23,11 @@ function fetchproducts() {
                 productElement = document.createElement('div');
                 productElement.className = 'productcards';
                 console.log(productElement);
+                productstring = JSON.stringify(product)
                 productElement.innerHTML = `
                     <h3>${product.productname}</h3>
                     <p>Price: ${product.price}</p>
-                    <button onclick="addtocart(${JSON.stringify(product)})">Add to Cart</button>
+                    <button onclick="addtocart(productstring)">Add to Cart</button>
                 `;
                 productsContainer.appendChild(productElement);
             }
@@ -38,9 +41,20 @@ function addtocart(fullproductarraypass) {
             sessionStorage.setItem("fullproductarray", fullproductarraypass);
         }
         else {
-            document.getElementById('cart-container').innerHTML=`
+            cartitembox=document.createElement('div');
+            cartitembox.className='cartitembox';
+            cartitembox.innerHTML=`
+                <img class="smallpic" src="OIPPP.jpg">
                 <p>${fullproductarray}</p>
             `
         }
     }
+}
+
+function callheader() {
+    document.getElementsByClassName("header")[0].innerHTML= `
+        <div class="welcome-message"></div>
+        <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
+        <div style="height: auto; width: 20%;"><a href="login.html" style="color: white;">Logout</a></div>
+    `
 }
