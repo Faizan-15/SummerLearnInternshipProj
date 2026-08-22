@@ -36,24 +36,19 @@ function fetchproducts() {
 function addtocart(fullproductarraypass) {
     console.log("val="+fullproductarraypass);
     if (fullproductarraypass) {
-        console.log('True');
-    }
-    else {
-        console.log('False');
-    }
-
-    if (fullproductarray === null || fullproductarray === "") {
-        sessionStorage.setItem("fullproductarray", fullproductarraypass);
-        console.log("123");
-    }
-    else {
+        cartcontainer=document.getElementById('cart-container');
         cartitembox=document.createElement('div');
         cartitembox.className='cartitembox';
         cartitembox.innerHTML=`
             <img class="smallpic" src="OIPPP.jpg">
             <p>${fullproductarray}</p>
         `
+        cartcontainer.appendChild(cartitembox);
         console.log("456");
+    }
+    else {
+        sessionStorage.setItem("fullproductarray", fullproductarraypass);
+        console.log("123");
     }
 }
 
