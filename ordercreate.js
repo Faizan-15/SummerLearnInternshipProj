@@ -13,7 +13,6 @@ function fetchproducts() {
             console.log(products);
             const productsContainer = document.getElementById('products-menu');
             console.log(productsContainer);
-            productsContainer.innerHTML = `<h1 style="color: white; text-align: center;">Products...</h1>`; // Clear previous content
 
             for (let i = 0; i < products.length; i++) {
                 const product = products[i];
@@ -25,7 +24,7 @@ function fetchproducts() {
                 productElement.innerHTML = `
                     <h3>${product.productname}</h3>
                     <p>Price: ${product.price}</p>
-                    <button id="pro${product.productid}" onclick="addtocart(${product.productid})">Add to Cart</button>
+                    <button id="${product.productid}" onclick="addtocart()">Add to Cart</button>
                 `;
                 productsContainer.appendChild(productElement);
             }
@@ -33,23 +32,49 @@ function fetchproducts() {
     }
 }
 
-function addtocart(fullproductarraypass) {
-    console.log("val="+fullproductarraypass);
-    if (fullproductarraypass) {
-        cartcontainer=document.getElementById('cart-container');
-        cartitembox=document.createElement('div');
-        cartitembox.className='cartitembox';
-        cartitembox.innerHTML=`
-            <img class="smallpic" src="OIPPP.jpg">
-            <p>${fullproductarray}</p>
-        `
-        cartcontainer.appendChild(cartitembox);
-        console.log("456");
+function addtocart() {
+    const prodId = event.target.id;
+    const xhttp = new XMLHttpRequest();
+    linkproductdetails = `https://oracleapex.com/ords/faizan05/hr/faizanpro/${prodId}`;
+    console.log(linkproductdetails);
+    xhttp.open("GET",linkproductdetails, true);
+    xhttp.send();
+    xhttp.onload = () => {
+        if(xhttp.status === 200) {
+            const jmlp = JSON.parse(xhttp.response);
+            response = jmlp.items[0];
+            console.log(response);
+            cartcontainer=document.getElementById('cart-container');
+            cartitembox=document.createElement('div');
+            cartitembox.className='cartitembox';
+            cartitembox.innerHTML=`
+                <img class="smallpic" src="OIPPP.jpg">
+                <p><b>Product ID:</b> ${response.productid}</p>
+                <p><b>Product Name:</b> ${response.productname}</p>
+                <p><b>Supplier:</b> ${response.suppliername}</p>
+                <p><b>Category:</b> ${response.categoryname}</p>
+                <p><b>Unit:</b> ${response.unit}</p>
+                <p><b>Price:</b> ${response.price}</p>
+            `;
+            cartcontainer.appendChild(cartitembox);
+        }
     }
-    else {
-        sessionStorage.setItem("fullproductarray", fullproductarraypass);
-        console.log("123");
-    }
+    // console.log("val="+fullproductarraypass);
+    // if (fullproductarraypass) {
+    //     cartcontainer=document.getElementById('cart-container');
+    //     cartitembox=document.createElement('div');
+    //     cartitembox.className='cartitembox';
+    //     cartitembox.innerHTML=`
+    //         <img class="smallpic" src="OIPPP.jpg">
+    //         <p>${fullproductarray}</p>
+    //     `
+    //     cartcontainer.appendChild(cartitembox);
+    //     console.log("456");
+    // }
+    // else {
+    //     sessionStorage.setItem("fullproductarray", fullproductarraypass);
+    //     console.log("123");
+    // }
 }
 
 function callheader() {

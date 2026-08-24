@@ -79,17 +79,20 @@ div.header {
     color:green;
     font-size:56px;
 }
-#products-menu {
-    display: flex;
-    flex-wrap: wrap;
-    background-color: yellow;
+#products-menu-box {
+    background-color: blue;
     height: 200px;
+    max-width: 65%;
     padding: 10px;
     margin:10px;
     border-radius: 10px;
     height:auto;
-    text-align: center;
-    scroll-behavior: auto;
+    text-align: center; 
+    overflow:auto;
+}
+#products-menu {
+    display: flex;
+    flex-wrap: wrap;
 }
 .productcards {
     margin: 10px;
@@ -108,7 +111,7 @@ div.header {
     text-align: center;
 }
 .cart-main-box {
-    background-color: burlywood;
+    background-color: darkblue;
     padding: 10px;
     border-radius: 5px;
     max-height: 430px;
@@ -121,6 +124,7 @@ div.header {
     scroll-behavior: auto;
 }
 .cartitembox {
+    background-color: lightgreen;
     padding: 10px;
     margin: 5px;
     border: 1px solid black;
