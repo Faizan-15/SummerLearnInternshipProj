@@ -109,8 +109,26 @@ div.header {
 }
 .cart-main-box {
     background-color: burlywood;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
+    max-height: 430px;
+    position: sticky;
+    top: 100px;
+}
+#cart-container {
+    max-height: 65%;
+    overflow: auto;
+    scroll-behavior: auto;
+}
+.cartitembox {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+.cartitembox:hover {
+    background-color: aqua;
 }
 .smallpic {
     height: 50px;
