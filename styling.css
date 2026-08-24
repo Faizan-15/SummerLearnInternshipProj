@@ -1,20 +1,6 @@
+/* CSS for Simple Elements is defined below. */
 body {
     background-color: #f4f6f9;
-}
-.totalbodybox {
-    display: flex;
-    flex-direction: row;
-}
-.cart-box {
-    border: 1px solid black;
-    border-radius: 5px;
-}
-input.searchboxes {
-    height: 20px;
-    width: 320px;
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid gray;
 }
 button {
     height: 20px;
@@ -28,18 +14,14 @@ button:hover {
     color:aqua;
     background-color:burlywood;
 }
-div.header {
-    position: sticky;
-    top: 0;
+/* CSS for Simple Classes is defined below. */
+.totalbodybox {
     display: flex;
     flex-direction: row;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-    background-color: red;
-    border-radius: 10px; 
-    margin: 5px;
-    padding: 10px 0px;
+}
+.cart-box {
+    border: 1px solid black;
+    border-radius: 5px;
 }
 .menu {
     display: inline-block;
@@ -73,27 +55,28 @@ div.header {
     background-color: skyblue;
     color: darkblue
 }
-#a2:hover
-{
-    background-color: white;
-    color:green;
-    font-size:56px;
+input.searchboxes {
+    height: 20px;
+    width: 320px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
 }
-#products-menu-box {
-    background-color: blue;
-    height: 200px;
-    max-width: 65%;
-    padding: 10px;
-    margin:10px;
-    border-radius: 10px;
-    height:auto;
-    text-align: center; 
-    overflow:auto;
-}
-#products-menu {
+
+div.header {
+    position: sticky;
+    top: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    border-radius: 10px; 
+    margin: 5px;
+    padding: 10px 0px;
 }
+
 .productcards {
     margin: 10px;
     width: 200px;
@@ -118,11 +101,6 @@ div.header {
     position: sticky;
     top: 100px;
 }
-#cart-container {
-    max-height: 65%;
-    overflow: auto;
-    scroll-behavior: auto;
-}
 .cartitembox {
     background-color: lightgreen;
     padding: 10px;
@@ -137,4 +115,31 @@ div.header {
 .smallpic {
     height: 50px;
     width: 50px;
+}
+/* CSS for Simple IDs is defined below. */
+#a2:hover
+{
+    background-color: white;
+    color:green;
+    font-size:56px;
+}
+#products-menu-box {
+    background-color: blue;
+    height: 200px;
+    max-width: 65%;
+    padding: 10px;
+    margin:10px;
+    border-radius: 10px;
+    height:auto;
+    text-align: center; 
+    overflow:auto;
+}
+#products-menu {
+    display: flex;
+    flex-wrap: wrap;
+}
+#cart-container {
+    max-height: 65%;
+    overflow: auto;
+    scroll-behavior: auto;
 }
