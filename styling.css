@@ -10,6 +10,23 @@ button {
     border: 1px solid gray;
     transition-duration: 1s;
 }
+ul {
+    list-style-type: none;
+    margin: 10px;
+    padding: 0;
+    overflow: hidden;
+    background-color: blue;
+    border-radius: 10px;
+}
+ul li {
+    float: left;
+}
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
 button:hover {
     color:aqua;
     background-color:whitesmoke;

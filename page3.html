@@ -1,89 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Foodpanda POS Portal</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="globallogin.js"></script>
-    <link href="styling.css" rel="stylesheet">
-</head>
-<body onload="fetchglobalusername()">
-    <div class="header">
-        <div class="welcome-message"></div>
-        <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
-        <div style="height: auto; width: 20%;"><a href="login.html" style="color: white;">Logout</a></div>
-    </div>
+    <head>
+        <title>Foodpanda POS Portal</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript" src="globallogin.js"></script>
+        <link href="styling.css" rel="stylesheet">
+    </head>
+    <body onload="fetchglobalusername(); navibar();">
+        <div class="header">
+            <div class="welcome-message"></div>
+            <div style="height: auto; width: 60%;"><h1 style="color: white;">Foodpanda POS Portal</h1></div>
+            <div style="height: auto; width: 20%;"><a href="login.html" style="color: white;">Logout</a></div>
+        </div>
 
-    <div style="background-color: rgba(0, 0, 139); padding: 10px; margin:10px; border-radius: 10px; height:auto; text-align: center;">
-            <div class="menu">
-                <a style="color: white;" href="page1.html">Main</a>
-            </div>
-            <div class="menu">
-                <a style="color: white;" href="page2.html">Orders</a>
-            </div>
-            <div class="menu">
-                <a style="color: white;" href="page3.html">Customers</a>
-            </div>
-            <div class="menu">
-                <a style="color: white;" href="page4.html">Shippers</a>
-            </div>
-            <div class="menu">
-                <a style="color: white;" href="page5.html">Suppliers</a>
-            </div>
-            <div class="menu">
-                <a style="color: white;" href="page6.html">Employees</a>
-            </div>
-    </div>
-    
-    <!-- <div style="background-color: cornflowerblue; border-color: black; border-style:solid; padding: 5px; margin:10px; border-radius: 10px; height:auto;"> -->
+        <div class="navibar">
+            
+        </div>
         
-        <div class="divcol">
-<!-- New Customer Addition -->
-        <h4>Add Customer</h4>
-        <p>Enter Customer Details to add to the database.</p>
-        <input id="i1" class="searchboxes" type="text" placeholder="Customer ID">
-        <input id="i2" class="searchboxes" type="text" placeholder="Customer Name">
-        <input id="i3" class="searchboxes" type="text" placeholder="Contact Name">
-        <input id="i4" class="searchboxes" type="text" placeholder="Address">
-        <input id="i5" class="searchboxes" type="text" placeholder="City">
-        <input id="i6" class="searchboxes" type="text" placeholder="Postal Code">
-        <input id="i7" class="searchboxes" type="text" placeholder="Country">
+        <!-- <div style="background-color: cornflowerblue; border-color: black; border-style:solid; padding: 5px; margin:10px; border-radius: 10px; height:auto;"> -->
+            
+            <div class="divcol">
+    <!-- New Customer Addition -->
+            <h4>Add Customer</h4>
+            <p>Enter Customer Details to add to the database.</p>
+            <input id="i1" class="searchboxes" type="text" placeholder="Customer ID">
+            <input id="i2" class="searchboxes" type="text" placeholder="Customer Name">
+            <input id="i3" class="searchboxes" type="text" placeholder="Contact Name">
+            <input id="i4" class="searchboxes" type="text" placeholder="Address">
+            <input id="i5" class="searchboxes" type="text" placeholder="City">
+            <input id="i6" class="searchboxes" type="text" placeholder="Postal Code">
+            <input id="i7" class="searchboxes" type="text" placeholder="Country">
 
-        <button onclick="customerinsert()" style="color: black; margin: 10px;">Add New Customer</button>
-        <div class="cusinsertsuccesscheck"></div>
+            <button onclick="customerinsert()" style="color: black; margin: 10px;">Add New Customer</button>
+            <div class="cusinsertsuccesscheck"></div>
 
-        </div>
-        
-<!-- View Customer -->
-        <div class="divcol">
-        
-        <h4>View Customer</h4>
-        <p>Enter Customer Details to view from the database.</p>
-        <input id="i8" class="searchboxes" type="text" placeholder="Enter Customer ID, Customer Name or Phone Number. ">
-        <button onclick="customercheck()" style="color: black; margin: 10px;">Find Customer</button>
-        <div id="customersdetails"></div>
-        </div>
-        
-<!-- Customer Modification -->
-        <div class="divcol">
-        
-        <h4>Modify Customer</h4>
-        <p>Enter Customer Details to Modify from the database.</p>
-        <input class="searchboxes" type="text" placeholder="Enter Customer ID, Customer Name or Phone Number. ">
-        <button style="color: black; margin: 10px;">Find Customer</button>
-        
-        </div>
-        
-<!-- Deleting Customers -->
-        <div class="divcol">
-        
-        <h4>Delete Customer</h4>
-        <p>Enter Customer Details to delete from the database.</p>
-        <input class="searchboxes" type="text" placeholder="Enter Customer ID, Customer Name or Phone Number. ">
-        <button style="color: black; margin: 10px;">Find Customer</button>
-        
-        </div>
-        
-    <!-- </div>   -->
-</body>
+            </div>
+            
+    <!-- View Customer -->
+            <div class="divcol">
+            
+            <h4>View Customer</h4>
+            <p>Enter Customer Details to view from the database.</p>
+            <input id="i8" class="searchboxes" type="text" placeholder="Enter Customer ID, Customer Name or Phone Number. ">
+            <button onclick="customercheck()" style="color: black; margin: 10px;">Find Customer</button>
+            <div id="customersdetails"></div>
+            </div>
+            
+    <!-- Customer Modification -->
+            <div class="divcol">
+            
+            <h4>Modify Customer</h4>
+            <p>Enter Customer Details to Modify from the database.</p>
+            <input class="searchboxes" type="text" placeholder="Enter Customer ID, Customer Name or Phone Number. ">
+            <button style="color: black; margin: 10px;">Find Customer</button>
+            
+            </div>
+            
+    <!-- Deleting Customers -->
+            <div class="divcol">
+            
+            <h4>Delete Customer</h4>
+            <p>Enter Customer Details to delete from the database.</p>
+            <input class="searchboxes" type="text" placeholder="Enter Customer ID, Customer Name or Phone Number. ">
+            <button style="color: black; margin: 10px;">Find Customer</button>
+            
+            </div>
+            
+        <!-- </div>   -->
+    </body>
 </html>

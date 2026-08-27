@@ -11,6 +11,19 @@ function fetchglobalusername() {
     document.getElementsByClassName("welcome-message")[0].innerHTML = global_username;
 }
 
+function navibar() {
+    document.getElementsByClassName("navibar")[0].innerHTML = `
+        <ul>
+            <li><a href="page1.html">Main</a></li>
+            <li><a href="page2.html">Orders</a></li>
+            <li><a href="page3.html">Customers</a></li>
+            <li><a href="page4.html">Shippers</a></li>
+            <li><a href="page5.html">Suppliers</a></li>
+            <li><a href="page6.html">Employees</a></li>
+        </ul>
+    `
+}
+
 // Customer's Page Functions defined below
 
 function customerinsert() {
