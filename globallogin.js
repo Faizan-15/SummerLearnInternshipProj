@@ -20,6 +20,8 @@ function navibar() {
             <li><a href="page4.html">Shippers</a></li>
             <li><a href="page5.html">Suppliers</a></li>
             <li><a href="page6.html">Employees</a></li>
+            <li><a href="page7.html">Products</a></li>
+            <li><a href="page8.html">OrderCreate</a></li>
         </ul>
     `
 }
