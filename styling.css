@@ -21,12 +21,12 @@ table {
     overflow: hidden;
     width: 75%;
 }
-table.page7 tr, table.page7 td {
+table.page7 thead tr, table.page7 tbody tr, table.page7 tbody td {
     width: auto;
     border: 1px solid black;
     border-collapse: separate;
 }
-table.page1 th, table.page1 td{
+body.page1 div table tbody th, body.page1 div table tbody td{
     border: 1px solid black;
     color: darkblue;
 }
