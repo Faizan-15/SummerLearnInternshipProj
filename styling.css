@@ -17,9 +17,10 @@ ul {
     overflow: hidden;
     background-color: blue;
     border-radius: 10px;
+    display: flex;
 }
 ul li {
-    float: left;
+    border-right: 1px solid #f4f6f9;
 }
 ul li a {
     display: block;
@@ -27,6 +28,7 @@ ul li a {
     text-align: center;
     padding: 10px;
 }
+/* CSS for elements with pseudo-classes */
 button:hover {
     color:aqua;
     background-color:whitesmoke;
@@ -126,20 +128,15 @@ div.header {
     border-radius: 10px;
     transition-duration: 0.5s;
 }
-.cartitembox:hover {
-    background-color: aqua;
-}
 .smallpic {
     height: 50px;
     width: 50px;
 }
-/* CSS for Simple IDs is defined below. */
-#a2:hover
-{
-    background-color: white;
-    color:green;
-    font-size:56px;
+/* CSS for classes with pseudo-classes */
+.cartitembox:hover {
+    background-color: aqua;
 }
+/* CSS for Simple IDs is defined below. */
 #products-menu-box {
     background-color: blue;
     height: 200px;
@@ -159,4 +156,11 @@ div.header {
     max-height: 65%;
     overflow: auto;
     scroll-behavior: auto;
+}
+/* CSS for IDs with pseudo-classes */
+#a2:hover
+{
+    background-color: white;
+    color:green;
+    font-size:56px;
 }
