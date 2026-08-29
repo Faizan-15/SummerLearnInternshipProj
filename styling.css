@@ -10,6 +10,26 @@ button {
     border: 1px solid gray;
     transition-duration: 1s;
 }
+thead, thead th {
+    border: 3px solid black;
+    border-collapse: separate;
+}
+table {
+    outline: 3px solid black;
+    border: 3px solid black;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 75%;
+}
+table.page7 tr, table.page7 td {
+    width: auto;
+    border: 1px solid black;
+    border-collapse: separate;
+}
+table.page1 th, table.page1 td{
+    border: 1px solid black;
+    color: darkblue;
+}
 ul {
     list-style-type: none;
     margin: 10px;
@@ -28,12 +48,46 @@ ul li a {
     text-align: center;
     padding: 10px;
 }
+/* CSS for elements with classes */ 
+div.displaycard {
+    right: 100px;
+    position: fixed;
+}
+input.searchboxes {
+    height: 20px;
+    width: 320px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+div.header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+    border-radius: 10px; 
+    margin: 5px;
+    padding: 10px 0px;
+}
 /* CSS for elements with pseudo-classes */
 button:hover {
     color:aqua;
     background-color:whitesmoke;
 }
 /* CSS for Simple Classes is defined below. */
+.buttonclass {
+    color: red;
+    background-color: white;
+    border: 1px solid blue;
+    padding: 5px;
+    height: auto;
+    width: auto;
+}
 .totalbodybox {
     display: flex;
     flex-direction: row;
@@ -74,28 +128,6 @@ button:hover {
     background-color: skyblue;
     color: darkblue
 }
-input.searchboxes {
-    height: 20px;
-    width: 320px;
-    margin: 5px;
-    border-radius: 5px;
-    border: 1px solid gray;
-}
-
-div.header {
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    justify-content: space-between;
-    align-items: center;
-    background-color: red;
-    border-radius: 10px; 
-    margin: 5px;
-    padding: 10px 0px;
-}
-
 .productcards {
     margin: 10px;
     width: 200px;
