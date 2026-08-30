@@ -41,6 +41,7 @@ ul {
 }
 ul li {
     border-right: 1px solid #f4f6f9;
+    padding: 0 15px;
 }
 ul li a {
     display: block;
@@ -80,6 +81,10 @@ button:hover {
     background-color:whitesmoke;
 }
 /* CSS for Simple Classes is defined below. */
+.navibar {
+    position: sticky;
+    top: 17%;
+}
 .buttonclass {
     color: red;
     background-color: white;
@@ -147,10 +152,11 @@ button:hover {
 .cart-main-box {
     background-color: darkblue;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     max-height: 430px;
     position: sticky;
-    top: 100px;
+    top: 155px;
+    right: 15px;
 }
 .cartitembox {
     background-color: lightgreen;
@@ -170,7 +176,7 @@ button:hover {
 }
 /* CSS for Simple IDs is defined below. */
 #products-menu-box {
-    background-color: blue;
+    background-color: yellowgreen;
     height: 200px;
     max-width: 65%;
     padding: 10px;
