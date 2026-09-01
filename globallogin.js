@@ -244,3 +244,14 @@ function employeedeleteconfirmation(){
         // User clicked "Cancel", do nothing
     }
 }
+
+function employeeupdate() {
+    const xhttp = new XMLHttpRequest();
+    linkempupdate = `https://oracleapex.com/ords/faizan05/hr/faizanempupdate/${document.getElementById('i8').value}`;
+    xhttp.onload = function() {
+        document.getElementsByClassName("empupdatesuccesscheck").innerHTML = this.responseText;
+    }
+    xhttp.open("POST", linkempupdate, true);
+    let stringsempupdatedata = "employeeid=";
+    xhttp.send();
+}
