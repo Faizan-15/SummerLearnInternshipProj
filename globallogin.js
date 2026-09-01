@@ -253,5 +253,5 @@ function employeeupdate() {
     }
     xhttp.open("POST", linkempupdate, true);
     let stringsempupdatedata = "employeeid=";
-    xhttp.send();
+    xhttp.send(stringsempupdatedata);
 }
