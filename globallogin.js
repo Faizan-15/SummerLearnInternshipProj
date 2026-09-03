@@ -220,7 +220,7 @@ function employeecheck(){
 
 function deleteemployee(){
     const xhttp = new XMLHttpRequest();
-    linkdelete = `https://oracleapex.com/ords/faizan05/hr/faizanemployee/${document.getElementById("i9").value}`;
+    linkdelete = `https://oracleapex.com/ords/faizan05/hr/faizanemployee/${document.getElementById("i14").value}`;
     console.log(linkdelete);
     xhttp.onload = function() {
         if (this.status ===200){
@@ -247,11 +247,19 @@ function employeedeleteconfirmation(){
 
 function employeeupdate() {
     const xhttp = new XMLHttpRequest();
-    linkempupdate = `https://oracleapex.com/ords/faizan05/hr/faizanempupdate/${document.getElementById('i8').value}`;
+    linkempupdate = `https://oracleapex.com/ords/faizan05/hr/faizanempupdate/`;
     xhttp.onload = function() {
-        document.getElementsByClassName("empupdatesuccesscheck").innerHTML = this.responseText;
+        document.getElementById("empupdatesuccesscheck").innerHTML = this.responseText;
     }
     xhttp.open("POST", linkempupdate, true);
-    let stringsempupdatedata = "employeeid=";
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    let stringsempupdatedata = "employeeid=" + document.getElementById("i8").value + "&firstname=" + document.getElementById("i9").value + "&lastname=" + document.getElementById("i10").value + "&birthdate=" + document.getElementById("i11").value + "&photo=" + document.getElementById("i12").value + "&notes=" + document.getElementById("i13").value + "&username=" + global_username;
+    console.log(stringsempupdatedata);
+    console.log(document.getElementById("i8").value);
+    console.log(document.getElementById("i9").value);
+    console.log(document.getElementById("i10").value);
+    console.log(document.getElementById("i11").value);
+    console.log(document.getElementById("i12").value);
+    console.log(document.getElementById("i13").value);
     xhttp.send(stringsempupdatedata);
 }
