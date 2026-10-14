@@ -169,6 +169,10 @@ function suppliercheck(){
 
 // Employee's Page Functions defined below
 
+// Employee's page functions completed statuses
+
+
+
 function myfunction(){
     alert("New Employee Added Successfully!");
 }
