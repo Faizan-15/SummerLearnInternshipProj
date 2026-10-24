@@ -116,6 +116,16 @@ button:hover {
     background-color: aquamarine;
     clip-path: circle();
 }
+.divcollogin {
+    margin: 5px;
+    height: fit-content;
+    width: fit-content;
+    /* div elements position must be center*/
+    padding: 100px;
+    border-radius: 10px;
+    background-color: skyblue;
+    color: darkblue
+}
 .divcol {
     margin: 5px;
     width: auto;

@@ -26,6 +26,40 @@ function navibar() {
     `
 }
 
+// Login Page Functions defined below
+
+function loginusernameauthent() {
+    const xhttp = new XMLHttpRequest();
+    if (document.getElementById("i1").value === "" || document.getElementById("i2").value === "") {
+        document.getElementById("loginresponse").innerHTML = "Please fill in all required fields!";
+        return;
+    }
+    else {
+        username1 = document.getElementById("i1").value;
+        usernamepass = username1 + "|" + document.getElementById("i2").value;
+        console.log(usernamepass);
+        linkloginusername = `https://oracleapex.com/ords/faizan05/hr/faizanusersusername/${usernamepass}`;
+        xhttp.open("GET",linkloginusername,true);
+        xhttp.send();
+        xhttp.onload = () => {
+            if (xhttp.status === 200) {
+                const response = JSON.parse(xhttp.response);
+                console.log(response);
+                document.getElementById("loginresponse").innerHTML = "Login Successful!";
+                console.log(global_username);
+                setglobalusername(username1);
+                console.log(global_username);
+                location.href = "page1.html";
+            }
+            else {
+                console.log("Error: " + xhttp.status);
+                document.getElementById("loginresponse").innerHTML = "Login Unsuccessful!<br><br>Either username or password is incorrect!";
+                // Handle error
+            }
+        }
+    }
+}
+
 // Customer's Page Functions defined below
 
 function customerinsert() {

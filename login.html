@@ -6,51 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="referrer" content="unsafe-url">
         <script src="globallogin.js"></script>
-        <script>
-            function loginusernameauthent() {
-                const xhttp = new XMLHttpRequest();
-                if (document.getElementById("i1").value === "" || document.getElementById("i2").value === "") {
-                    document.getElementById("loginresponse").innerHTML = "Please fill in all required fields!";
-                    return;
-                }
-                else {
-                    username1 = document.getElementById("i1").value;
-                    usernamepass = username1 + "|" + document.getElementById("i2").value;
-                    console.log(usernamepass);
-                    linkloginusername = `https://oracleapex.com/ords/faizan05/hr/faizanusersusername/${usernamepass}`;
-                    xhttp.open("GET",linkloginusername,true);
-                    xhttp.send();
-                    xhttp.onload = () => {
-                        if (xhttp.status === 200) {
-                            const response = JSON.parse(xhttp.response);
-                            console.log(response);
-                            document.getElementById("loginresponse").innerHTML = "Login Successful!";
-                            console.log(global_username);
-                            setglobalusername(username1);
-                            console.log(global_username);
-                            location.href = "page1.html";
-                        }
-                        else {
-                            console.log("Error: " + xhttp.status);
-                            document.getElementById("loginresponse").innerHTML = "Login Unsuccessful!<br><br>Either username or password is incorrect!";
-                            // Handle error
-                        }
-                    }
-                }
-            }
-        </script>
-        <style>
-            .divcol {
-                margin: 5px;
-                height: fit-content;
-                width: fit-content;
-                /* div elements position must be center*/
-                padding: 100px;
-                border-radius: 10px;
-                background-color: skyblue;
-                color: darkblue
-            }
-        </style>
+        <link href="styling.css" rel="stylesheet">
     </head>
 
     <body>
@@ -59,7 +15,7 @@
         </div>
 
         <center>
-            <div class="divcol">
+            <div class="divcollogin">
 
                 <input type="text" id="i1" placeholder="Username">
                 <br><br>
@@ -67,9 +23,7 @@
                 <br><br>
                 <button onclick="loginusernameauthent()">Login</button>
                 <br><br>
-                <div id="loginresponse">
-                    
-                </div>
+                <span id="loginresponse"></span>
 
             </div>
         </center>
