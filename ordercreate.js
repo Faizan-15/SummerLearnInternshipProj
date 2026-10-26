@@ -59,22 +59,6 @@ function addtocart() {
             cartcontainer.appendChild(cartitembox);
         }
     }
-    // console.log("val="+fullproductarraypass);
-    // if (fullproductarraypass) {
-    //     cartcontainer=document.getElementById('cart-container');
-    //     cartitembox=document.createElement('div');
-    //     cartitembox.className='cartitembox';
-    //     cartitembox.innerHTML=`
-    //         <img class="smallpic" src="OIPPP.jpg">
-    //         <p>${fullproductarray}</p>
-    //     `
-    //     cartcontainer.appendChild(cartitembox);
-    //     console.log("456");
-    // }
-    // else {
-    //     sessionStorage.setItem("fullproductarray", fullproductarraypass);
-    //     console.log("123");
-    // }
 }
 
 function callheader() {
