@@ -61,7 +61,13 @@ input.searchboxes {
     border-radius: 5px;
     border: 1px solid gray;
 }
-
+div.bodylogin1 {
+    text-align:center;
+    background-color: darkblue;
+    border-radius: 10px;
+    height: 40px;
+    margin: 10px;
+}
 div.header {
     position: sticky;
     top: 1%;
