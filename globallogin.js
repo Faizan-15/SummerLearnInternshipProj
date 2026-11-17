@@ -1,6 +1,6 @@
 // Functions common to all pages defined below
 
-var global_username = localStorage.getItem("global_username") || "Guest";
+var global_username = localStorage.getItem("global_username") || "Guest"; // By Default Username will be Guest.
 
 function setglobalusername(username) {
     global_username = username;
