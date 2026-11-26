@@ -203,14 +203,12 @@ function suppliercheck(){
 
 // Employee's Page Functions defined below
 
-// Employee's page functions completed statuses
-
-
 
 function myfunction(){
     alert("New Employee Added Successfully!");
 }
 
+//New Employee Adding Function
 function employeeinsert() {
     const xhttp = new XMLHttpRequest();
     linkempinsert=`https://oracleapex.com/ords/faizan05/hr/faizanemp/`;
@@ -229,7 +227,7 @@ function employeeinsert() {
     console.log(document.getElementById("i6").value);
     xhttp.send(stringsempindata);
 }
-
+//Employee Viewing or Displaying Function
 function employeecheck(){
     const xhttp = new XMLHttpRequest();
     linkempcheckview = `https://oracleapex.com/ords/faizan05/hr/faizanemployee/${document.getElementById("i7").value}`;
@@ -256,6 +254,7 @@ function employeecheck(){
     
 }
 
+//Employee Deletion Function
 function deleteemployee(){
     const xhttp = new XMLHttpRequest();
     linkdelete = `https://oracleapex.com/ords/faizan05/hr/faizanemployee/${document.getElementById("i14").value}`;
@@ -274,7 +273,7 @@ function deleteemployee(){
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send();
 }
-
+//Confirmation for Deletion as it is somehow critical data updation.
 function employeedeleteconfirmation(){
     if (confirm("Are you sure you want to delete this employee?")) {
         deleteemployee();
@@ -283,6 +282,7 @@ function employeedeleteconfirmation(){
     }
 }
 
+// Employee Updation Function
 function employeeupdate() {
     const xhttp = new XMLHttpRequest();
     linkempupdate = `https://oracleapex.com/ords/faizan05/hr/faizanempupdate/`;
