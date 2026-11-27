@@ -111,6 +111,7 @@ function customercheck() {
 
 // Shipper's Page Functions defined below
 
+//New Shipper Insertion Function
 function shipperinsert(){
     const xhttp = new XMLHttpRequest();
     linkshipinsert=`https://oracleapex.com/ords/faizan05/hr/faizanship/`;
@@ -127,6 +128,8 @@ function shipperinsert(){
     xhttp.send(stringsshipindata);
 
 }
+
+//Shipper Viewing or Displaying Function
 function shippercheck(){
     const xhttp = new XMLHttpRequest();
     linkshipcheckview = `https://oracleapex.com/ords/faizan05/hr/faizanshippers/${document.getElementById("i4").value}`;
@@ -173,6 +176,7 @@ function supplierinsert() {
     xhttp.send(stringssupindata);
 }
 
+//Supplier Viewing or Displaying Function
 function suppliercheck(){
     const xhttp = new XMLHttpRequest();
     linksupcheckview = `https://oracleapex.com/ords/faizan05/hr/faizansuppliers/${document.getElementById("i9").value}`;
